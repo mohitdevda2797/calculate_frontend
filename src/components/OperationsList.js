@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react";
+import {useRef, useState} from "react";
 import axios from "axios";
 import {MdDelete, MdEdit, MdCancel} from "react-icons/md";
 import {BsInfoCircleFill} from "react-icons/bs";
@@ -13,7 +13,7 @@ const columns = [
     {field: 'example_text', headerName: 'Example Text'},
 ]
 
-export default function OperationsList({operations, setOperations, fetchData}) {
+export default function OperationsList({operations, fetchData}) {
     const formRef = useRef();
     const [isUpdate, setIsUpdate] = useState(false)
     const [idForUpdate, setIdForUpdate] = useState(null);

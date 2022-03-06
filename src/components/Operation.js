@@ -1,10 +1,9 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import axios from "axios";
 
 const executeUrl = 'http://127.0.0.1:8000/execute-operation/'
 
 export default function Operation({operations}) {
-    // const [operations, setOperations] = useState([])
     const [selectedOperation, setSelectedOperation] = useState(-1)
     const [result, setResult] = useState(0)
 
