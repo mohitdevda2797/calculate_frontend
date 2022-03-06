@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from "./components/Navbar";
+import Operation from "./components/Operation";
+import OperationsList from "./components/OperationsList";
+import {useEffect, useState} from "react";
+import axios from "axios";
+
+const url = 'http://127.0.0.1:8000/operations'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [operations, setOperations] = useState([])
+
+    const fetchData = async () => {
+        const {data} = await axios.get(url)
+        console.log(data)
+        setOperations(data)
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    return (
+        <>
+            <Navbar/>
+            <div className='my-4 mx-8 flex flex-col gap-4'>
+                <div><Operation operations={operations}/></div>
+                <div><OperationsList operations={operations} setOperations={setOperations} fetchData={fetchData}/></div>
+            </div>
+        </>
+    );
 }
 
 export default App;
