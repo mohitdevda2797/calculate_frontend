@@ -21,11 +21,11 @@ export default function OperationsList({operations, fetchData}) {
     return (
         <>
             <div className="grid grid-cols-3 gap-4">
-                <div className='border border-gray-400 rounded p-4'>
+                <div className='border border-gray-400 rounded p-4 col-span-3 md:col-span-1'>
                     <OperationForm fetchData={fetchData} formRef={formRef}
                                    isUpdate={isUpdate} setIsUpdate={setIsUpdate} idForUpdate={idForUpdate}/>
                 </div>
-                <div className='border border-gray-400 rounded p-4 col-span-3 sm:col-span-2'>
+                <div className='border border-gray-400 rounded p-4 col-span-3 md:col-span-2 overflow-auto'>
                     <OperationsTable operations={operations} fetchData={fetchData} formRef={formRef} isUpdate={isUpdate}
                                      setIsUpdate={setIsUpdate} setIdForUpdate={setIdForUpdate}/>
                 </div>
